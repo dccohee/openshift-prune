@@ -9,8 +9,7 @@ node(""){
     {
         // Run all tasks on the app. This includes pushing to OpenShift and S3.
         sh """
-        oc login ${OPENSHIFT_URL} --username='${env.OPENSHIFT_USERNAME}' --password='${env.OPENSHIFT_PASSWORD}'
-        """
+        oc login ${OPENSHIFT_URL} --username="${env.OPENSHIFT_USERNAME}" --password="${env.OPENSHIFT_PASSWORD}" """
     }
   }
 }
