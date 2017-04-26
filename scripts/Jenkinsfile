@@ -3,7 +3,7 @@ node(""){
   stage ("Checkout")
   {
         dir("openshift-prune") {
-            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/openshift-prune.git"
+            git branch: "master", url: "https://github.com/ossimlabs/openshift-prune.git"
         }
 
   }    
