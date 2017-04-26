@@ -1,5 +1,12 @@
 node(""){
-    
+    env.OPENSHIFT_URL=${OPENSHIFT_URL}
+  stage ("Checkout")
+  {
+        dir("openshift-prune") {
+            git branch: "${OSSIM_GIT_BRANCH}", url: "https://github.com/ossimlabs/openshift-prune.git"
+        }
+
+  }    
   stage ("Publish Docker App")
   {
     withCredentials([[$class: 'UsernamePasswordMultiBinding',
@@ -9,7 +16,10 @@ node(""){
     {
         // Run all tasks on the app. This includes pushing to OpenShift and S3.
         sh """
-        oc login ${OPENSHIFT_URL} --username="${env.OPENSHIFT_USERNAME}" --password="${env.OPENSHIFT_PASSWORD}" """
+        pushd openshift-prune/scripts
+        ./prune.sh
+        popd
+        """
     }
   }
 }
