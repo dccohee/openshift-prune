@@ -1,4 +1,4 @@
-node(""){
+node("openshift-master"){
   env.OPENSHIFT_URL=OPENSHIFT_URL
   stage ("Checkout")
   {
