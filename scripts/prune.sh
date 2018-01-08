@@ -4,25 +4,25 @@ if [ $? != 0 ] ; then
    echo "Unable to login to openshift server"
    exit 1
 fi
-oc project o2
+oc project openshift
 if [ $? != 0 ] ; then 
-   echo "Unable to change to project o2"
+   echo "Unable to change to project openshift"
    exit 1
 fi
 
 oadm prune images --confirm=true
 if [ $? != 0 ] ; then 
-   echo "Unable to prune images on project o2"
+   echo "Unable to prune images on project openshift"
    exit 1
 fi
 oadm prune builds --confirm=true
 if [ $? != 0 ] ; then 
-   echo "Unable to prune builds on project o2"
+   echo "Unable to prune builds on project openshift"
    exit 1
 fi
 oadm prune deployments --confirm=true
 if [ $? != 0 ] ; then 
-   echo "Unable to prune deployments on project o2"
+   echo "Unable to prune deployments on project openshift"
    exit 1
 fi
 
